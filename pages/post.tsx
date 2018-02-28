@@ -1,13 +1,19 @@
 import Layout from "../components/MyLayout";
 import { UrlComponent } from "../typings/next/UrlComponent";
 
+const Content:React.SFC<{title: string}> = ({title}) => (
+  <div>
+    <h1>{title}</h1>
+    <p>This is the blog post content.</p>
+  </div>
+);
+
 interface PageProps extends UrlComponent {
 }
 
 const Page: React.SFC<PageProps> = ({url}) => (
   <Layout>
-    <h1>{url.query.title}</h1>
-    <p>This is the blog post content.</p>
+    <Content title={url.query.title} />
   </Layout>
 );
 
