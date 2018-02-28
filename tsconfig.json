@@ -1,0 +1,11 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strictNullChecks": true
+  }
+}
