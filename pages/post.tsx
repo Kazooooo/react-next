@@ -1,5 +1,6 @@
 import Layout from "../components/MyLayout";
 import fetch from "isomorphic-unfetch";
+import { UrlComponent, Context } from "next";
 
 interface PostProps extends UrlComponent {
   show: any;
