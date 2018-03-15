@@ -1,20 +1,27 @@
 import Layout from "../components/MyLayout";
-import { UrlComponent } from "../typings/next/UrlComponent";
+import fetch from "isomorphic-unfetch";
+import { UrlComponent, Context } from "next";
 
-const Content:React.SFC<{title: string}> = ({title}) => (
-  <div>
-    <h1>{title}</h1>
-    <p>This is the blog post content.</p>
-  </div>
-);
-
-interface PageProps extends UrlComponent {
+interface PostProps extends UrlComponent {
+  show: any;
 }
 
-const Page: React.SFC<PageProps> = ({url}) => (
+const Post: React.SFC<PostProps> = (props) => (
   <Layout>
-    <Content title={url.query.title} />
+    <h1>{props.show.name}</h1>
+    <p>{props.show.summary.replace(/<[/]?p>/g, "")}</p>
+    <img src={props.show.image.medium} />
   </Layout>
 );
 
-export default Page;
+Post.getInitialProps = async function (context: Context) {
+  const { id } = context.query;
+  const res = await fetch(`http://api.tvmaze.com/shows/${id}`);
+  const show = await res.json();
+
+  console.log(`Fetched show: ${show.name}`);
+
+  return { show };
+}
+
+export default Post;
