@@ -17,6 +17,7 @@
     "next-awesome-typescript": "^0.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-markdown": "^3.3.0",
     "typescript": "^2.7.2"
   }
 }
