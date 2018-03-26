@@ -1,2 +1,6 @@
 const withAwesomeTypescript = require("next-awesome-typescript");
-module.exports = withAwesomeTypescript();
+module.exports = withAwesomeTypescript({}, {
+  exportPathMap: () => ({
+      "/" : { page: "/" },
+  }),
+});
